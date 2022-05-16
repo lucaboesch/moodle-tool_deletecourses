@@ -59,14 +59,14 @@ if ($mform->is_cancelled()) {
         )
     );
     \core\task\manager::queue_adhoc_task($task);
-    redirect($returnurl, get_string('deletequeued', 'tool_deletecourses', $category->name));
+    redirect($returnurl, get_string('deletequeued', 'tool_deletecourses', format_string($category->name, true, ['context' => $context])));
 }
 
 // Print page.
 echo $OUTPUT->header();
 echo $OUTPUT->heading(new lang_string('deleteallcourses', 'tool_deletecourses'));
 echo $OUTPUT->box_start('generalbox', 'notice');
-echo html_writer::tag('p', get_string('deleteconfirm', 'tool_deletecourses', $category->name));
+echo html_writer::tag('p', get_string('deleteconfirm', 'tool_deletecourses', format_string($category->name, true, ['context' => $context])));
 $mform->display();
 echo $OUTPUT->box_end();
 echo $OUTPUT->footer();
